@@ -11,16 +11,16 @@ function JobForm() {
 
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
     setJob({
       ...job,
       [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     navigate('/job-details', { state: { job } });
   };
 
