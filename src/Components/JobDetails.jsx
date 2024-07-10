@@ -2,16 +2,16 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 function JobDetails() {
-  const location = useLocation();
-  const { job } = location.state;
-
+  const located = useLocation();
+  const { job } = located.state;
+  const {title, description, skills, location } = job;
   return (
     <div>
       <h2>Job Details</h2>
-      <p><strong>Job Title:</strong> {job.title}</p>
-      <p><strong>Skills:</strong> {job.skills}</p>
-      <p><strong>Description:</strong> {job.description}</p>
-      <p><strong>Job Location:</strong> {job.location}</p>
+      <p><strong>Job Title:</strong> {title}</p>
+      <p><strong>Skills:</strong> {skills}</p>
+      <p><strong>Description:</strong> {description}</p>
+      <p><strong>Job Location:</strong> {location}</p>
     </div>
   );
 }
