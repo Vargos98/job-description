@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 function JobForm() {
   const [job, setJob] = useState({
     title: '',
@@ -10,7 +10,7 @@ function JobForm() {
   });
 
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(false);
   const handleChange = (event) => {
     const { name, value } = event.target;
     setJob({
@@ -22,6 +22,22 @@ function JobForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     navigate('/job-details', { state: { job } });
+  };
+  const generateDescription = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.post('http://localhost:5000/generate-description', {
+        title: job.title,
+        skills: job.skills,
+      });
+      setJob({
+        ...job,
+        description: response.data.description,
+      });
+    } catch (error) {
+      console.error('Error fetching job description:', error);
+    }
+    setLoading(false);
   };
 
   return (
@@ -39,6 +55,9 @@ function JobForm() {
         <div>
           <label>Description:</label>
           <textarea name="description" value={job.description} onChange={handleChange} required />
+          <button type="button" onClick={generateDescription} disabled={loading}>
+            {loading ? 'Generating...' : 'Generate Description'}
+          </button>
         </div>
         <div>
           <label>Job Location:</label>
