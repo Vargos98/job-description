@@ -11,6 +11,8 @@ function JobForm() {
 
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
     setJob({
@@ -26,7 +28,7 @@ function JobForm() {
   const generateDescription = async () => {
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/generate-description', {
+      const response = await axios.post('https://End-point', {
         title: job.title,
         skills: job.skills,
       });
