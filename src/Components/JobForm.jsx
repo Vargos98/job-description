@@ -60,7 +60,7 @@ const JobForm = () => {
 
   return (
     <div className='container mx-auto p-4' style={{ width: '70%' }}>
-      <h1 className='blue-400 fs-1 mb-4 font'>Post A New Job</h1>
+      <h1 className='blue-400 fs-1 mb-4 font' style={{fontFamily:'serif', fontWeight:'700', color:'#3b82f6'}}>Post A New Job</h1>
       <Form onSubmit={handleSubmit}>
         <Row className='mb-3'>
           <Col>
@@ -173,17 +173,18 @@ const JobForm = () => {
           </Col>
         </Row>
 
-        <Form.Group controlId='formJobTags' className='mb-3'>
+        <Form.Group controlId='formJobTags' className='mb-3' >
           <Form.Control
             type='text'
             name='jobTags'
-            style={{ backgroundColor: '#eff6ff' }}
+            style={{ backgroundColor: '#eff6ff',height:'150px'  }}
             value={formData.jobTags}
             onChange={handleChange}
             placeholder='e.g. PHP, Developer, CSS'
           />
         </Form.Group>
-
+        <Row className='mb-3'>
+        <Col>
         <Form.Group controlId='formLocation' className='mb-3'>
           <Form.Control
             type='text'
@@ -194,7 +195,9 @@ const JobForm = () => {
             placeholder='Enter Location'
           />
         </Form.Group>
+        </Col>
 
+        <Col>
         <Form.Group controlId='formQualifications' className='mb-3'>
           <Form.Control
             type='text'
@@ -205,8 +208,9 @@ const JobForm = () => {
             placeholder='Enter Qualifications'
           />
         </Form.Group>
-
-        <Button variant='primary' type='submit'>
+        </Col>
+        </Row>
+        <Button variant='primary' type='submit' style={{backgroundColor:'#3b82f6'}}>
           Save & Preview
         </Button>
       </Form>
