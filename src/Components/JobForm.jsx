@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import "./JobForm.css";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Form, Button, Row, Col } from 'react-bootstrap';
 import ReactQuill from 'react-quill';
+import JobFormTwo from './JobFormTwo';
 import 'react-quill/dist/quill.snow.css';
-
 const JobForm = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -59,162 +59,142 @@ const JobForm = () => {
   };
 
   return (
-    <div className='container mx-auto p-4' style={{ width: '70%' }}>
-      <h1 className='blue-400 fs-1 mb-4 font' style={{fontFamily:'serif', fontWeight:'700', color:'#3b82f6'}}>Post A New Job</h1>
-      <Form onSubmit={handleSubmit}>
-        <Row className='mb-3'>
-          <Col>
-            <Form.Group controlId='formJobTitle'>
-              <Form.Control
-                type='text'
-                name='jobTitle'
-                value={formData.jobTitle}
-                onChange={handleChange}
-                placeholder='Job Title'
-                style={{ backgroundColor: '#eff6ff' }}
-              />
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group controlId='JobType'>
-              <Form.Control
-                as='select'
-                name='jobType'
-                style={{ backgroundColor: '#eff6ff' }}
-                value={formData.jobType}
-                onChange={handleChange}
-              >
-                <option value='Freelancer'>Freelancer</option>
-                <option value='Remote'>Remote</option>
-                <option value='On-Site'>On-Site</option>
-                <option value='Hybrid'>Hybrid</option>
-              </Form.Control>
-            </Form.Group>
-          </Col>
-        </Row>
-
-        <Row className='mb-3'>
-          <Col>
-            <Form.Group controlId='formExperience'>
-              <Form.Control
-                type='text'
-                name='experience'
-                style={{ backgroundColor: '#eff6ff' }}
-                value={formData.experience}
-                onChange={handleChange}
-                placeholder='Enter Experience'
-              />
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group controlId='formApplicationDeadline'>
-              <Form.Control
-                type='date'
-                name='applicationDeadline'
-                style={{ backgroundColor: '#eff6ff' }}
-                value={formData.applicationDeadline}
-                onChange={handleChange}
-              />
-            </Form.Group>
-          </Col>
-        </Row>
-
-        <div style={{ position: 'relative' }}>
-          <button
-            type='button'
-            style={{
-              position: 'absolute',
-              top: '10px',
-              right: '10px',
-              border: 'none',
-              background: 'transparent',
-              color: '#3b82f6',
-              cursor: 'pointer',
-              fontSize: '16px',
-              fontWeight: 'bold',
-            }}
-            onClick={generateDescription}
-            disabled={loading}
-          >
-            {loading ? 'Generating...' : 'Write with AI'}
-          </button>
+    <>
+      <JobFormTwo />
+    <div className="job-form-container">
+      <h1>Post A New Job</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="form-row">
+          <div className="form-group">
+            <label htmlFor="jobTitle">Job Title *</label>
+            <input
+              type="text"
+              id="jobTitle"
+              name="jobTitle"
+              value={formData.jobTitle}
+              onChange={handleChange}
+              placeholder="Job Title"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="jobType">Job Type *</label>
+            <input
+              type="text"
+              id="jobType"
+              name="jobType"
+              value={formData.jobType}
+              onChange={handleChange}
+              placeholder="Freelancer"
+              required
+            />
+          </div>
+        </div>
+        <div className="form-row">
+          <div className="form-group">
+            <label htmlFor="experience">Experience *</label>
+            <input
+              type="text"
+              id="experience"
+              name="experience"
+              value={formData.experience}
+              onChange={handleChange}
+              placeholder="Enter Experience *"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="applicationDeadline">Application Deadline</label>
+            <input
+              type="text"
+              id="applicationDeadline"
+              name="applicationDeadline"
+              value={formData.applicationDeadline}
+              onChange={handleChange}
+              placeholder="dd-mm-yyyy"
+            />
+          </div>
+        </div>
+        <div className="form-group">
+          <label htmlFor="jobDescription">Job Description</label>
           <ReactQuill
             theme='snow'
             value={formData.jobDescription}
+            title='Enter Job Description'
             onChange={handleQuillChange}
             style={{ height: '200px', marginBottom: '80px' }}
           />
+          
         </div>
-
-        <Row className='mb-3'>
-          <Col>
-            <Form.Group controlId='formMinSalary'>
-              <Form.Control
-                type='number'
-                name='minSalary'
-                style={{ backgroundColor: '#eff6ff' }}
-                value={formData.minSalary}
-                onChange={handleChange}
-                placeholder='Enter Min Salary'
-              />
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group controlId='formMaxSalary'>
-              <Form.Control
-                type='number'
-                name='maxSalary'
-                style={{ backgroundColor: '#eff6ff' }}
-                value={formData.maxSalary}
-                onChange={handleChange}
-                placeholder='Enter Max Salary'
-              />
-            </Form.Group>
-          </Col>
-        </Row>
-
-        <Form.Group controlId='formJobTags' className='mb-3' >
-          <Form.Control
-            type='text'
-            name='jobTags'
-            style={{ backgroundColor: '#eff6ff',height:'150px'  }}
-            value={formData.jobTags}
-            onChange={handleChange}
-            placeholder='e.g. PHP, Developer, CSS'
-          />
-        </Form.Group>
-        <Row className='mb-3'>
-        <Col>
-        <Form.Group controlId='formLocation' className='mb-3'>
-          <Form.Control
-            type='text'
-            name='location'
-            style={{ backgroundColor: '#eff6ff' }}
-            value={formData.location}
-            onChange={handleChange}
-            placeholder='Enter Location'
-          />
-        </Form.Group>
-        </Col>
-
-        <Col>
-        <Form.Group controlId='formQualifications' className='mb-3'>
-          <Form.Control
-            type='text'
-            name='qualifications'
-            style={{ backgroundColor: '#eff6ff' }}
-            value={formData.qualifications}
-            onChange={handleChange}
-            placeholder='Enter Qualifications'
-          />
-        </Form.Group>
-        </Col>
-        </Row>
-        <Button variant='primary' type='submit' style={{backgroundColor:'#3b82f6'}}>
+        <div className="form-row">
+          <div className="form-group">
+            <label htmlFor="minSalary">Minimum Salary *</label>
+            <input
+              type="text"
+              id="minSalary"
+              name="minSalary"
+              value={formData.minSalary}
+              onChange={handleChange}
+              placeholder="Enter Min Salary *"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="maxSalary">Max Salary *</label>
+            <input
+              type="text"
+              id="maxSalary"
+              name="maxSalary"
+              value={formData.maxSalary}
+              onChange={handleChange}
+              placeholder="Enter Max Salary *"
+              required
+            />
+          </div>
+        </div>
+        <div className="form-row">
+          <div className="form-group">
+            <label htmlFor="skills">Skills *</label>
+            <input
+              type="text"
+              id="skills"
+              name="skills"
+              value={formData.skills}
+              onChange={handleChange}
+              placeholder="e.g. PHP, Developer, CSS *"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="location">Location *</label>
+            <input
+              type="text"
+              id="location"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              placeholder="Enter Location *"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="qualifications">Qualifications</label>
+            <input
+              type="text"
+              id="qualifications"
+              name="qualifications"
+              value={formData.qualifications}
+              onChange={handleChange}
+              placeholder="Enter Qualifications"
+            />
+          </div>
+        </div>
+        <button type="submit" className="submit-button">
           Save & Preview
-        </Button>
-      </Form>
+        </button>
+      </form>
     </div>
+    </>
   );
 };
 
