@@ -47,6 +47,7 @@ const JobForm = () => {
       const response = await axios.post('https://End-point', {
         title: formData.jobTitle,
         skills: formData.jobTags,
+      
       });
       setFormData({
         ...formData,
