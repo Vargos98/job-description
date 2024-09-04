@@ -4,6 +4,7 @@ import { Form, Button } from "react-bootstrap";
 function BasicDetailsForm() {
   const [formData, setFormData] = useState({
     name: "",
+    instituteName: "",
     status: "Fresher",
     location: "India",
     currentLocation: "",
@@ -26,10 +27,12 @@ function BasicDetailsForm() {
 
   return (
     <div className="d-flex justify-content-center">
+    
       <Form
         onSubmit={handleSubmit}
         style={{ width: "65%", backgroundColor: "#f8f9fa", padding: "20px", borderRadius: "10px" }}
       >
+      <h3 className="mb-4">Basic Details</h3>
         <Form.Group controlId="formName">
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -41,10 +44,15 @@ function BasicDetailsForm() {
           />
         </Form.Group>
 
-        <Form.Group controlId="formInstitute" className="mt-3">
-          <Form.Label>
-            MCA at Kalinga Institute of Industrial Technology
-          </Form.Label>
+        <Form.Group controlId="formName">
+          <Form.Label>Education</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter your institution name"
+            name="instituteName"
+            value={formData.instituteName}
+            onChange={handleChange}
+          />
         </Form.Group>
 
         <Form.Group controlId="formWorkStatus" className="mt-3">
