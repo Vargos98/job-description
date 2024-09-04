@@ -19,14 +19,38 @@ function AwardCertification() {
     noExpiry: false,
   });
 
+  const handleAddNewCertificate = () => {
+    setCertificationData({
+      name: "",
+      completionID: "",
+      url: "",
+      validityFrom: { month: "", year: "" },
+      validityTo: { month: "", year: "" },
+      noExpiry: false,
+    });
+    setEditingIndex(accomplishments.length);
+    setShowModal(true);
+  };
+
   const handleEditDetails = (index) => {
+    setCertificationData(accomplishments[index].details || {
+      name: "",
+      completionID: "",
+      url: "",
+      validityFrom: { month: "", year: "" },
+      validityTo: { month: "", year: "" },
+      noExpiry: false,
+    });
     setEditingIndex(index);
     setShowModal(true);
   };
 
   const handleSaveDetails = () => {
     const updatedAccomplishments = [...accomplishments];
-    updatedAccomplishments[editingIndex].details = { ...certificationData }; // Save the form data as an object
+    updatedAccomplishments[editingIndex] = {
+      ...updatedAccomplishments[editingIndex],
+      details: { ...certificationData },
+    };
     setAccomplishments(updatedAccomplishments);
     setShowModal(false);
     setEditingIndex(null);
@@ -79,14 +103,14 @@ function AwardCertification() {
   return (
     <div className="container mt-4" style={{ width: "65%" }}>
       <h3>Awards and Certifications</h3>
-      <p>Showcase your credentials by adding relevant certifications</p>
+      <p >Showcase your credentials by adding relevant certifications</p>
       <div className="list-group">
         {accomplishments.map((item, index) => (
           <div key={index} className="list-group-item">
-            <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex justify-content-between align-items-center ">
               <div style={{ width: '100%' }}>
                 <h5>{item.title}</h5>
-                <p>{item.description}</p>
+                <p >{item.description}</p>
                 {item.details && (
                   <div>
                     <p><strong>Certification Name:</strong> {item.details.name}</p>
@@ -113,6 +137,12 @@ function AwardCertification() {
           </div>
         ))}
       </div>
+
+      {accomplishments.some(item => item.details) && (
+        <Button variant="success" className="mt-4" onClick={handleAddNewCertificate}>
+          Add New Certificate
+        </Button>
+      )}
 
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
@@ -175,7 +205,6 @@ function AwardCertification() {
                   <option value="10">October</option>
                   <option value="11">November</option>
                   <option value="12">December</option>
-                
                   {/* Add more months here */}
                 </Form.Select>
                 <Form.Control
