@@ -5,6 +5,7 @@ import JobDetails from './Components/JobDetails';
 import ProfileSummary from './Components/ProfileSummary';
 import AwardCertification from './Components/AwardCertification';
 import BasicDetailsForm from './Components/BasicDetailsForm';
+import ResumeBuilder from './Components/ResumeBuilder';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/ProfileSummary" element={<ProfileSummary />} />
         <Route path="/JobFormTwo" element={<JobFormTwo />} />
         <Route path="/BasicDetailsForm" element={<BasicDetailsForm />} />
+        <Route path="/ResumeBuilder" element={<ResumeBuilder />} />
     
       </Routes>
     </Router>
