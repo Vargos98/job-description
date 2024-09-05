@@ -5,7 +5,7 @@ import { faFileAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const ResumeBuilder = () => {
   return (
-    <div className='d-flex' style={{ margin: '10px auto', justifyContent: 'center', gap: '20px' }}>
+    <div className='d-flex flex-wrap ' style={{ margin: '10px auto', justifyContent: 'center', gap: '20px' }}>
       {/* Resume Builder Card */}
       <Card className="p-3" style={{ backgroundColor: '#4db2ff', borderRadius: '25px', width: '550px' }}>
         <Card.Body>
@@ -16,13 +16,13 @@ const ResumeBuilder = () => {
             </Col>
             {/* Content on the right */}
             <Col xs={10}>
-              <Card.Title className="text-white">Resume Builder</Card.Title>
+              <Card.Title className="text-white ">Resume Builder</Card.Title>
               <Card.Text className="text-white">
                 Build an impressive resume in minutes or download a pre-built resume.
               </Card.Text>
-              <div>
-                <Button variant="light" className="">Upload Resume</Button>
-                <Button variant="light" className="m-2">Download Resume</Button>
+              <div className='d-flex flex-wrap '>
+                <Button variant="light" className="m-2 rounded-pill">Upload Resume</Button>
+                <Button variant="light" className="m-2 rounded-pill">Download Resume</Button>
               </div>
             </Col>
           </Row>
@@ -43,9 +43,9 @@ const ResumeBuilder = () => {
               <Card.Text className="text-white">
                 Build an impressive Cover letter in minutes or download a pre-built resume.
               </Card.Text>
-              <div>
-                <Button variant="light" className="">Upload Cover letter</Button>
-                <Button variant="light" className="m-2">Download cover letter</Button>
+              <div className='d-flex flex-wrap '>
+                <Button variant="light" className=" m-2 rounded-pill text-xs">Upload Cover letter</Button>
+                <Button variant="light" className="m-2 rounded-pill">Download cover letter</Button>
               </div>
             </Col>
           </Row>
