@@ -6,6 +6,8 @@ import ProfileSummary from './Components/ProfileSummary';
 import AwardCertification from './Components/AwardCertification';
 import BasicDetailsForm from './Components/BasicDetailsForm';
 import ResumeBuilder from './Components/ResumeBuilder';
+import ChooseUsername from './Components/ChooseUsername';
+import ChangePassword from './Components/ChangePassword';
 
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
         <Route path="/JobFormTwo" element={<JobFormTwo />} />
         <Route path="/BasicDetailsForm" element={<BasicDetailsForm />} />
         <Route path="/ResumeBuilder" element={<ResumeBuilder />} />
+        <Route path="/ChangePassword" element={<ChangePassword />} />
+        <Route path="/ChooseUsername" element={<ChooseUsername />} />
     
       </Routes>
     </Router>
