@@ -40,7 +40,15 @@ const JobCard = () => {
         </div>
         {/* Job description end */}
 
-        
+        {/* Skills section */}
+
+        <p className='text-gray-500'><span className='text-gray-600 font-bold'>Skills: </span> Lead generation, Cold calling, Convincing skills</p>
+        <p className='text-gray-500 font-bold -mt-2'>0-6 years of Experience in delivery</p>
+
+        {/* Skills section end */}
+
+      <div className='w-full h-[10px]'></div>
+ 
       </div>
     </div>
   );
