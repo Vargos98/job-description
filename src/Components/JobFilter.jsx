@@ -1,16 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react';
+import JobCard from './JobCard';
 
 const JobFilter = () => {
+  // Single state object to store filter values
+  const [filters, setFilters] = useState({
+    location: '',
+    jobType: '',
+    jobRole: '',
+    monthlySalary: '',
+  });
+
+  // Update state for specific filter field
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFilters({
+      ...filters,
+      [name]: value, // Dynamically update the field based on input name
+    });
+  };
+
+  // Handler for applying filters
+  const handleApply = () => {
+    console.log('Selected Filters:', filters);
+  };
+
   return (
-    <div className="flex items-center justify-between p-4 bg-white shadow-md gap-4">
+    <>
+      <div className="flex items-center justify-between p-4 bg-white shadow-md gap-4">
       {/* Location Input */}
       <div className="w-1/5">
         <label className="text-sm font-semibold" htmlFor="location">Location</label>
         <input
           type="text"
           id="location"
+          name="location" // Ensure the name matches the state field
           placeholder="Search location"
           className="mt-1 w-full p-2 border border-gray-300 rounded"
+          value={filters.location}
+          onChange={handleChange}
         />
       </div>
 
@@ -19,7 +46,10 @@ const JobFilter = () => {
         <label className="text-sm font-semibold" htmlFor="jobType">Job type</label>
         <select
           id="jobType"
+          name="jobType" // Ensure the name matches the state field
           className="mt-1 w-full p-2 border border-gray-300 rounded"
+          value={filters.jobType}
+          onChange={handleChange}
         >
           <option value="">Select job type</option>
           <option value="fullTime">Full Time</option>
@@ -33,7 +63,10 @@ const JobFilter = () => {
         <label className="text-sm font-semibold" htmlFor="jobRole">Job role</label>
         <select
           id="jobRole"
+          name="jobRole" // Ensure the name matches the state field
           className="mt-1 w-full p-2 border border-gray-300 rounded"
+          value={filters.jobRole}
+          onChange={handleChange}
         >
           <option value="">Select job role</option>
           <option value="developer">Developer</option>
@@ -44,10 +77,13 @@ const JobFilter = () => {
 
       {/* Monthly Salary Dropdown */}
       <div className="w-1/5">
-        <label className="text-sm font-semibold" htmlFor="salary">Monthly Salary</label>
+        <label className="text-sm font-semibold" htmlFor="monthlySalary">Monthly Salary</label>
         <select
-          id="salary"
+          id="monthlySalary"
+          name="monthlySalary" // Ensure the name matches the state field
           className="mt-1 w-full p-2 border border-gray-300 rounded"
+          value={filters.monthlySalary}
+          onChange={handleChange}
         >
           <option value="">Select monthly salary</option>
           <option value="1000">Less than $1000</option>
@@ -68,12 +104,17 @@ const JobFilter = () => {
 
       {/* Apply Button */}
       <div className="w-auto">
-        <button className="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600">
+        <button
+          className="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600"
+          onClick={handleApply}
+        >
           Apply
         </button>
       </div>
     </div>
+    <JobCard/>
+    </>
   );
-}
+};
 
-export default JobFilter
+export default JobFilter;
