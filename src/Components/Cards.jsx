@@ -19,15 +19,16 @@ const Cards = () => {
 
 
   return (
-    <div className='bg-zinc-100 w-full h-screen'>
-      <h1 className='underline underline-offset-2 ml-14 pt-10  font-mono text-4xl sm:text-xl md:text-3xl lg:text-5xl '>
-        Filter through several job postings daily
+    <div className='bg-zinc-900 w-full h-screen'>
+      <h1 className='underline underline-offset-4 ml-14 pt-10 text-wrap text-white opacity-90 tracking-tighter font-mono text-4xl sm:text-xl md:text-3xl lg:text-5xl transition-all ease-in duration-300 '>
+        Filter through new <br /><span className='opacity-100 text-orange-400 text-7xl font-serif ml-[30%] transition-all ease-in duration-300'>"Job"</span>
       </h1>
-      <div className='flex flex-nowrap flex-col  lg:flex-row justify-center items-center h-full mt-10  lg:-mt-10'>
+      <h1 className='underline underline-offset-4 transition-all ease-in duration-300 text-wrap text-white opacity-90 font-mono tracking-tighter text-4xl sm:text-xl md:text-3xl lg:text-5xl ml-[42%]'>postings daily.</h1>
+      <div className='flex flex-nowrap flex-col  lg:flex-row justify-center items-center h-full mt-10  lg:-mt-10 '>
 
         {data.map((elem, index) => (
 
-          <div className='w-[90%] h-[30%] sm:w-full md:flex-col md:w-full lg:w-[15%]  md:h-[45%]   rounded-md hover:w-[35%] lg:hover:w-[30%] md:hover:w-[80%] transition-all duration-[300ms] ease-in hover:ease-in relative overflow-hidden group' index={index}>
+          <div className='w-[90%] h-[30%] sm:w-full md:flex-col md:w-full lg:w-[15%]  md:h-[45%]  rounded-md hover:w-[35%] lg:hover:w-[30%] md:hover:w-[80%] transition-all duration-[300ms] ease-in hover:ease-in relative overflow-hidden group ' index={index}>
             <button className='absolute px-4 py-1 text-center top-10 left-5 opacity-[1%] group-hover:opacity-100 bg-black rounded-full text-white text-lg sm:text-xl md:text-2xl lg:text-3xl z-20 transition-opacity duration-300 text-nowrap ease-in'>
               {elem.name}
             </button>
