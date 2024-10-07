@@ -9,6 +9,7 @@ import ResumeBuilder from './Components/ResumeBuilder';
 import ChooseUsername from './Components/ChooseUsername';
 import ChangePassword from './Components/ChangePassword';
 import JobFilter from './Components/JobFilter';
+import Cards from './Components/Cards';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/ChangePassword" element={<ChangePassword />} />
         <Route path="/ChooseUsername" element={<ChooseUsername />} />
         <Route path="/JobFilter" element={<JobFilter />} />
+        <Route path="/Cards" element={<Cards/>} />
     
       </Routes>
     </Router>
